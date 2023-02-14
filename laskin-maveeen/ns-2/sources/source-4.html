@@ -1,0 +1,167 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > LaskinTest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">laskin</a>
+</div>
+
+<h1>Coverage Summary for Class: LaskinTest (laskin)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LaskinTest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85,7%
+  </span>
+  <span class="absValue">
+    (6/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    93,8%
+  </span>
+  <span class="absValue">
+    (15/16)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package laskin;
+&nbsp;
+&nbsp;import org.junit.jupiter.api.Test;
+&nbsp;import org.junit.jupiter.api.BeforeEach;
+&nbsp;import org.junit.jupiter.api.Disabled;
+&nbsp;import org.junit.jupiter.api.DisplayName;
+&nbsp;
+&nbsp;import static org.junit.jupiter.api.Assertions.assertEquals;
+&nbsp;import static org.junit.jupiter.api.Assertions.assertThrows;
+&nbsp;import static org.junit.jupiter.api.Assertions.fail;
+&nbsp;/*
+&nbsp; * JUnit 5
+&nbsp; */
+&nbsp;
+<b class="fc">&nbsp;public class LaskinTest { // Luokan nimen loppu pit‰‰ olla Test</b>
+&nbsp;
+&nbsp;    // Fixture (&quot;vakiokaluste&quot;): kaikki testit k‰ytt‰v‰t samaa laskinta,
+&nbsp;    // joka nollataan ennen kutakin testi‰.
+<b class="fc">&nbsp;    private Laskin laskin = new Laskin();</b>
+<b class="fc">&nbsp;    private final double DELTA = 0.001;</b>
+&nbsp;
+&nbsp;    @BeforeEach
+&nbsp;    public void clearCalculator() {
+<b class="fc">&nbsp;        laskin.nollaa();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Testimetodin nimi voi olla mit‰ tahansa, edess‰ annotaatio @Test
+&nbsp;    @Test
+&nbsp;    public void testLisaa() {
+<b class="fc">&nbsp;        laskin.lisaa(1);</b>
+<b class="fc">&nbsp;        laskin.lisaa(2);</b>
+<b class="fc">&nbsp;        assertEquals(3, laskin.annaTulos(), &quot;Lukujen 1 ja 2 summa v‰‰rin&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    public void testVahenna() {
+<b class="fc">&nbsp;        laskin.lisaa(10);</b>
+<b class="fc">&nbsp;        laskin.vahenna(2);</b>
+<b class="fc">&nbsp;        assertEquals(8, laskin.annaTulos(), &quot;Lukujen 10 ja 2 erotus v‰‰rin&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Test
+&nbsp;    @DisplayName(&quot;Testaa jakolasku 8 / 2&quot;)
+&nbsp;    public void testJaa() {
+<b class="fc">&nbsp;        laskin.lisaa(8);</b>
+<b class="fc">&nbsp;        laskin.jaa(2);</b>
+<b class="fc">&nbsp;        assertEquals(4, laskin.annaTulos(), &quot;Jakolasku 8/2 v‰‰rin&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    // Testin oikea tulos on, ett‰ nollallajako heitt‰‰ poikkeuksen,
+&nbsp;    // kutsuja k‰sittelee sen sitten haluamallaan tavalla
+&nbsp;    @Test
+&nbsp;    @DisplayName(&quot;Testaa nollallajako&quot;)
+&nbsp;    public void testJaaNollalla() {
+<b class="fc">&nbsp;        ArithmeticException poikkeus = assertThrows(ArithmeticException.class, () -&gt; laskin.jaa(0));</b>
+<b class="fc">&nbsp;        assertEquals(&quot;Nollalla ei voi jakaa&quot;, poikkeus.getMessage());</b>
+&nbsp;    }
+&nbsp; 
+&nbsp;    @Test
+&nbsp;    @Disabled(&quot;HUOMAA - Metodi kerro() on viel‰ toteuttamatta, eik‰ sit‰ haluta ajaa viel‰&quot;)
+&nbsp;    public void testKerro() {
+<b class="nc">&nbsp;       fail(&quot;TESTIƒ EI OLE VIELƒ TOTEUTETTU&quot;);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-02-14 21:01</div>
+</div>
+</body>
+</html>
